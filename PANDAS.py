@@ -1,20 +1,36 @@
 #AULA SOBRE OS PANDAS
 
-"""LEITURA DE DADOS"""
 import pandas as pd
 
-"""LER UM ARQUIVO EXCEL E CSV"""
-variavel = pd.read_excel('meu_arquivo.xlsx')
-
-"""CRIAR O DATAFRAMe"""
-dataframe = [[1, 'Joao', 'SP'], [2, 'Coringa', 'RJ']]
-df1 = pd.DataFrame(dataframe, columns=['id', 'nome', 'Cidade'])
-
-# ou ASSIM
-dados = {'id':[9,0,8],'nome':['Valor1', 'Valor2', 'Valor3']}
-df2 = pd.DataFrame(dados)
+"""CRIAR UM DATAFRAME(TABELA)"""
+dataframe = pd.DataFrame() # --> CRIA UM DATAFRAME(TABELA) EM BRANCO
 
 
+#criar um dataframe apartir de um dicionario!
 
-"""ESCREVER/CRIAR EXCEL E CSV"""
-df1.to_excel('novo_arquivo.xlsx', index=True)
+dicionario = {
+    'data':['12/02/2025', '16/02/2025'],
+    'valor':[500, 300],
+    'produto':['skin', 'picareta'],
+    'qtd':[40, 90]
+}
+
+# dicionario_df = pd.DataFrame(dicionario)
+# print(dicionario_df)
+
+
+#LER UMA BASE DE DADOS EXCEL E IMPORTA PARA O DATAFRAME
+
+valores_arquivo = pd.read_excel('meu_arquivo.xlsx')
+print(valores_arquivo)
+
+# print(valores_arquivo.head(2)) # --> MOSTRA O TANTO DE LINHA PASSADO ALI
+# print(valores_arquivo.shape) # --> MOSTRA O NUMERO DE LINHAS E COLUNAS
+# print(valores_arquivo.describe()) # --> MOSTAR UM RESUMO SOBRE OS DADOS NUMERICOS DA TABELA
+
+# print(valores_arquivo)
+#EDITAR A TABELA
+# valores_arquivo = valores_arquivo['Idade']
+
+var = valores_arquivo.loc[valores_arquivo['Nome'] == 'Maria', ['Sexo']]
+print(var)
